@@ -11,7 +11,6 @@ bot = Bot(token=BOT_TOKEN, parse_mode=types.ParseMode.HTML)
 dp = Dispatcher(bot)
 
 
-# Хэндлеры для инлайн-кнопок с выбором жанра
 @dp.message_handler(commands=['start'])
 async def greeting_page(message: types.Message):
     await bot.send_photo(message.chat.id, photo='https://www.dorkaholics.com/wp-content/uploads/2022/07/pexels-evg-kowalievska-1174746.jpeg',
@@ -53,7 +52,6 @@ async def strategy_genre(callback_query: types.CallbackQuery):
                          caption='Отлично! Теперь выберите интересующую вас игру в жанре игр с открытым миром:', reply_markup=openworld_games_kb)
 
 
-# попробуем по другому
 @dp.callback_query_handler(text=game_titles)
 async def show_invoices_mortal_combat(callback_query: types.CallbackQuery):
     global current_game
